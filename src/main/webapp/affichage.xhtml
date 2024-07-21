@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<f:view>
+        <h:head>
+            <title>Enregistrement</title>
+           <link type="text/css" rel="stylesheet" href="./css/Output.css" /> 
+        </h:head>
+        <h:body>
+            <h1>Vos identifiants ont été bien enregistrés</h1>
+            <div align="center">
+            <table border='1' cellpadding="10" cellspacing="1" >
+                <tr>
+                    <td><h:outputLabel value="Nom" /></td>
+                    <td><h:outputText value="#{user.nom}" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Prenom" /></td>
+                    <td><h:outputText value="#{user.prenom}" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Sexe" /></td>
+                    <td><h:outputText value="#{user.sexe}" /></td>
+                </tr>
+                <ui:repeat value="#{user.transport}" var="n" varStatus="status">  
+                    <tr>
+                        <td><h:outputLabel value="#{status.first ? 'Transport' : ''}" /></td>
+                        <td><h:outputText value="#{n}" /></td>
+                    </tr>
+                </ui:repeat>
+                <tr>
+                    <td><h:outputLabel value="Code Postal" /></td>
+                    <td><h:outputText value="#{user.code}" /></td>
+                </tr>
+                
+            </table>
+            <br/>
+            </div>
+            <h:form>
+                <h:commandButton value='Edit' style="width:130px" action="index" />
+            </h:form>
+        </h:body>
+    </f:view>
+    
+</html>

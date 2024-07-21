@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<f:view>
+    <h:head>
+        <title>Formulaire</title>
+       <link type="text/css" rel="stylesheet" href="./css/Output.css" /> 
+    </h:head>
+    <h:body>
+        <h1>Formulaire d'inscription</h1>
+        <h:form>
+            <table border='1' cellpadding="10" cellspacing="1">
+                <tr>
+                <td> Nom:</td>
+                <td>
+                <h:inputText id="nom" value="#{user.nom}" required="true" 
+                             requiredMessage=" Veuillez saisir un nom "/>
+                <h:message for="nom"  style="color:red;" />
+                </td>
+                </tr><tr>
+                <td> Prénom:</td>
+                <td>
+                <h:inputText id="prenom" value="#{user.prenom}" required="true"
+                               requiredMessage=" Veuillez saisir un prénom"/>
+                <h:message for="prenom" style="color:red;" />
+                </td>
+                </tr><tr>
+                    <td>Sexe</td>
+                    <td>
+                        <h:selectOneListbox id="sexe"
+			value="#{user.sexe}" required="true" requiredMessage=" Veuillez choisir Homme ou Femme ">
+                        <f:selectItem itemValue="#{null}" itemLabel="-- Select --" noSelectionOption="true" />
+			<f:selectItem itemLabel="Homme" itemValue="Homme" />
+			<f:selectItem itemLabel="Femme" itemValue="Femme" />
+                        </h:selectOneListbox>
+                        <h:message for="sexe" style="color:red;" />
+                    </td></tr><tr>
+                    <td>Transport: (cmd ou ctr + clic)</td>
+                    <td>
+                  <h:selectManyListbox id="transport"
+			value="#{user.transport}">
+		        <f:selectItem itemLabel="Voiture" itemValue="Voiture" />
+			<f:selectItem itemLabel="A Pied" itemValue="A pied" />
+			<f:selectItem itemLabel="Vélo" itemValue="Vélo" />
+			<f:selectItem itemLabel="Camion" itemValue="Camion" />
+			<f:selectItem itemLabel="Avion" itemValue="Avion" />
+		</h:selectManyListbox>
+                       
+		</td>
+                </tr>
+                <td>Code Postale</td>
+                <td>
+                    <h:inputText id="CP" value="#{user.code}" required="true" 
+                                 requiredMessage="Le code Postal est obligatoire"
+                                 validatorMessage="Le code Postal est un entier entre 1 et 99999">
+                        <f:validateLongRange  for="CP" minimum="1" maximum="99999"/>
+                        <f:converter converterId="javax.faces.Integer" />
+                    </h:inputText>
+                         <h:message for="CP" style="color:red;" />
+                </td>
+                <tr>
+                <td colspan="2">
+                    <p style="text-align: center;">
+                <h:commandButton action="affichage"  style="width:130px" value="Connect" />
+                    </p>
+                </td>
+                </tr>
+            </table>
+           </h:form>
+    </h:body>
+       </f:view>
+       
+</html>
